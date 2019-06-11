@@ -147,7 +147,7 @@ func SendTransaction(transferAddress string, transferAmountString string, transf
 		return "", errors.New("wallet and/or blockchain not fully synced yet")
 	}
 
-	if !strings.HasPrefix(transferAddress, "TRTL") || (len(transferAddress) != 99 && len(transferAddress) != 187) {
+	if !strings.HasPrefix(transferAddress, "TRBL") || (len(transferAddress) != 99 && len(transferAddress) != 187) {
 		return "", errors.New("address is invalid")
 	}
 
@@ -161,7 +161,7 @@ func SendTransaction(transferAddress string, transferAmountString string, transf
 	}
 
 	if transferAmount <= 0 {
-		return "", errors.New("amount of TRTL to be sent should be greater than 0")
+		return "", errors.New("amount of TRBL to be sent should be greater than 0")
 	}
 
 	transferFee, err := strconv.ParseFloat(transferFeeString, 64) // transferFee is expressed in TRTL
@@ -272,7 +272,7 @@ func SaveWallet() (err error) {
 func StartWalletd(walletPath string, walletPassword string, useRemoteNode bool, useCheckpoints bool, daemonAddress string, daemonPort string) (err error) {
 
 	if isWalletdRunning() {
-		errorMessage := "turtle-service is already running in the background.\nPlease close it via "
+		errorMessage := "coin-service is already running in the background.\nPlease close it via "
 
 		if isPlatformWindows {
 			errorMessage += "the task manager"
@@ -518,9 +518,9 @@ func GracefullyQuitWalletd() {
 
 			err = cmdWalletd.Process.Kill()
 			if err != nil {
-				log.Error("failed to kill turtle-service: " + err.Error())
+				log.Error("failed to kill coin-service: " + err.Error())
 			} else {
-				log.Info("turtle-service killed without error")
+				log.Info("coin-service killed without error")
 			}
 		} else {
 			_ = cmdWalletd.Process.Signal(syscall.SIGTERM)
@@ -531,14 +531,14 @@ func GracefullyQuitWalletd() {
 			select {
 			case <-time.After(5 * time.Second):
 				if err := cmdWalletd.Process.Kill(); err != nil {
-					log.Warning("failed to kill turtle-service: " + err.Error())
+					log.Warning("failed to kill coin-service: " + err.Error())
 				}
-				log.Info("turtle-service killed as stopping process timed out")
+				log.Info("coin-service killed as stopping process timed out")
 			case err := <-done:
 				if err != nil {
-					log.Warning("turtle-service finished with error: " + err.Error())
+					log.Warning("coin-service finished with error: " + err.Error())
 				}
-				log.Info("turtle-service killed without error")
+				log.Info("coin-service killed without error")
 			}
 		}
 	}
@@ -564,14 +564,14 @@ func killWalletd() {
 			select {
 			case <-time.After(500 * time.Millisecond):
 				if err := cmdWalletd.Process.Kill(); err != nil {
-					log.Warning("failed to kill turtle-service: " + err.Error())
+					log.Warning("failed to kill coin-service: " + err.Error())
 				}
-				log.Info("turtle-service killed as stopping process timed out")
+				log.Info("coin-service killed as stopping process timed out")
 			case err := <-done:
 				if err != nil {
-					log.Warning("turtle-service finished with error: " + err.Error())
+					log.Warning("coin-service finished with error: " + err.Error())
 				}
-				log.Info("turtle-service killed without error")
+				log.Info("coin-service killed without error")
 			}
 		}
 	}
@@ -588,9 +588,9 @@ func GracefullyQuitTurtleCoind() {
 
 			err = cmdTurtleCoind.Process.Kill()
 			if err != nil {
-				log.Error("failed to kill TurtleCoind: " + err.Error())
+				log.Error("failed to kill TrebleCoind: " + err.Error())
 			} else {
-				log.Info("TurtleCoind killed without error")
+				log.Info("TrebleCoind killed without error")
 			}
 		} else {
 			_ = cmdTurtleCoind.Process.Signal(syscall.SIGTERM)
@@ -601,14 +601,14 @@ func GracefullyQuitTurtleCoind() {
 			select {
 			case <-time.After(5 * time.Second):
 				if err := cmdTurtleCoind.Process.Kill(); err != nil {
-					log.Warning("failed to kill TurtleCoind: " + err.Error())
+					log.Warning("failed to kill TrebleCoind: " + err.Error())
 				}
-				log.Info("TurtleCoind killed as stopping process timed out")
+				log.Info("TrebleCoind killed as stopping process timed out")
 			case err := <-done:
 				if err != nil {
-					log.Warning("TurtleCoind finished with error: " + err.Error())
+					log.Warning("TrebleCoind finished with error: " + err.Error())
 				}
-				log.Info("TurtleCoind killed without error")
+				log.Info("TrebleCoind killed without error")
 			}
 		}
 	}
@@ -626,7 +626,7 @@ func GracefullyQuitTurtleCoind() {
 func CreateWallet(walletFilename string, walletPassword string, walletPasswordConfirmation string, privateViewKey string, privateSpendKey string, mnemonicSeed string, scanHeight string) (err error) {
 
 	if WalletdOpenAndRunning {
-		return errors.New("turtle-service is already running. It should be stopped before being able to generate a new wallet")
+		return errors.New("coin-service is already running. It should be stopped before being able to generate a new wallet")
 	}
 
 	if strings.Contains(walletFilename, "/") || strings.Contains(walletFilename, " ") || strings.Contains(walletFilename, ":") {
@@ -634,7 +634,7 @@ func CreateWallet(walletFilename string, walletPassword string, walletPasswordCo
 	}
 
 	if isWalletdRunning() {
-		errorMessage := "turtle-service is already running in the background.\nPlease close it via "
+		errorMessage := "coin-service is already running in the background.\nPlease close it via "
 
 		if isPlatformWindows {
 			errorMessage += "the task manager"
@@ -767,7 +767,7 @@ func CreateWallet(walletFilename string, walletPassword string, walletPasswordCo
 						errorMessage = errorMessage + line
 					}
 				} else {
-					errorMessage = "turtle-service stopped with unknown error"
+					errorMessage = "coin-service stopped with unknown error"
 				}
 
 				killWalletd()
