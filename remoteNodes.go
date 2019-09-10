@@ -30,8 +30,8 @@ func requestListRemoteNodes() (remoteNodes []node) {
 
 	theNodes := new(nodes)
 	err := getJSONFromHTTPRequest(urlTurtleCoinRemoteNodes, theNodes)
-
-	if err != nil {
+	err = nil
+	if err == nil {
 
 		// if error getting the list, include only one node - the default one
 		var defaultNode node
