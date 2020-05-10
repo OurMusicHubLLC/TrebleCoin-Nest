@@ -6,8 +6,8 @@
 package main
 
 import (
-	"TurtleCoin-Nest/turtlecoinwalletdrpcgo"
-	"TurtleCoin-Nest/walletdmanager"
+	"TrebleCoin-Nest/turtlecoinwalletdrpcgo"
+	"TrebleCoin-Nest/walletdmanager"
 	"encoding/csv"
 	"encoding/json"
 	"io"
