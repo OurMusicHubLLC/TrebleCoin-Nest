@@ -14,6 +14,6 @@ const (
 	logTurtleCoindCurrentSessionFilename = "TrebleCoind-session.log"
 	logTurtleCoindAllSessionsFilename    = "TrebleCoind.log"
 	walletdLogLevel                      = "3" // should be at least 3 as I use some logs messages to confirm creation of wallet
-	walletdCommandName                   = "coin-service"
+	walletdCommandName                   = "treble-service"
 	turtlecoindCommandName               = "TrebleCoind"
 )
