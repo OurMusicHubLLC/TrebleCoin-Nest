@@ -222,10 +222,10 @@ func getAndDisplayBalances() {
 
 	walletAvailableBalance, walletLockedBalance, walletTotalBalance, err := walletdmanager.RequestBalance()
 	if err == nil {
-		qmlBridge.DisplayAvailableBalance(humanize.FormatFloat("#,###.##", walletAvailableBalance))
-		qmlBridge.DisplayLockedBalance(humanize.FormatFloat("#,###.##", walletLockedBalance))
+		qmlBridge.DisplayAvailableBalance(humanize.FormatFloat("#,###.####", walletAvailableBalance))
+		qmlBridge.DisplayLockedBalance(humanize.FormatFloat("#,###.####", walletLockedBalance))
 		balanceUSD := walletTotalBalance * rateUSDTRTL
-		qmlBridge.DisplayTotalBalance(humanize.FormatFloat("#,###.##", walletTotalBalance), humanize.FormatFloat("#,###.##", balanceUSD))
+		qmlBridge.DisplayTotalBalance(humanize.FormatFloat("#,###.####", walletTotalBalance), humanize.FormatFloat("#,###.####", balanceUSD))
 	}
 }
 

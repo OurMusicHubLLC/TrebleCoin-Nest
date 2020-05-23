@@ -14,7 +14,7 @@ const (
 	numberTransactionsToDisplay = 20
 
 	// default remote node
-	defaultRemoteDaemonAddress = "166.70.159.100"
+	defaultRemoteDaemonAddress = "3.94.0.255"
 	defaultRemoteDaemonPort    = "32323"
 	defaultRemoteDaemonName    = "XMission"
 	defaultRemoteDaemonSSL     = false
