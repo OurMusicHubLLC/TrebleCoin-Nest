@@ -9,7 +9,7 @@ const (
 	versionNest                 = "0.37"
 	urlCryptoCompareTRTL        = "https://min-api.cryptocompare.com/data/price?fsym=TRTL&tsyms=USD"
 	logFileFilename             = "TurtleCoin-Nest.log"
-	urlBlockExplorer            = "https://blocks.turtle.link/"
+	urlBlockExplorer            = "https://blocks.treble.link/"
 	dbFilename                  = "settings.db"
 	numberTransactionsToDisplay = 20
 
