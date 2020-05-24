@@ -18,7 +18,7 @@ Dialog {
     width: 900
 
     property var addressDev: "TRBLhS1G2EFHZaJDjUQjnc5ng7ZzP9hrM9G9mrUUSwzKNvAhQFyvfu67sdjbomBe3BNu3MV4VTfiuXjxP4HS18mtXocoY6twRbB"
-    property var websiteChat: "http://chat.turtlecoin.lol"
+    property var websiteChat: "http://chat.treblecoin.lol"
     property var versionNest: ""
     property var newVersionNestAvailable: ""
     property var urlNewVersionNest: ""
