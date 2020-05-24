@@ -316,7 +316,7 @@ func GetFeeInfo(rpcPassword string) (address string, fee float64, status string,
 
 	resultAmount := result.(map[string]interface{})["amount"]
 	if resultAmount != nil {
-		fee = resultAmount.(float64)
+		fee = resultAmount.(float64) / 10000
 	} else {
 		fee = 0
 	}

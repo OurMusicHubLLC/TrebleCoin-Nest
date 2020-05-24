@@ -491,12 +491,12 @@ func getFullBalanceAndDisplayInTransferAmount(transferFee string) {
 	if err != nil {
 		qmlBridge.DisplayErrorDialog("Error calculating full balance minus fee.", err.Error())
 	}
-	qmlBridge.DisplayFullBalanceInTransferAmount(humanize.FtoaWithDigits(availableBalance, 2))
+	qmlBridge.DisplayFullBalanceInTransferAmount(humanize.FtoaWithDigits(availableBalance, 4))
 }
 
 func getDefaultFeeAndDisplay() {
 
-	qmlBridge.DisplayDefaultFee(humanize.FtoaWithDigits(walletdmanager.DefaultTransferFee, 2))
+	qmlBridge.DisplayDefaultFee(humanize.FtoaWithDigits(walletdmanager.DefaultTransferFee, 4))
 }
 
 func getNodeFeeAndDisplay() {
@@ -505,7 +505,7 @@ func getNodeFeeAndDisplay() {
 	if err != nil {
 		qmlBridge.DisplayNodeFee("-")
 	} else {
-		qmlBridge.DisplayNodeFee(humanize.FtoaWithDigits(nodeFee, 2))
+		qmlBridge.DisplayNodeFee(humanize.FtoaWithDigits(nodeFee, 4))
 	}
 }
 
@@ -569,7 +569,7 @@ func exportListTransactions() {
 		readableTimestampString := transfer.Timestamp.Format("2006-01-02 15:04:05")
 		blockString := strconv.Itoa(transfer.Block)
 		amountString := strconv.FormatFloat(transfer.Amount, 'f', -1, 64)
-		feeString := strconv.FormatFloat(transfer.Fee, 'f', 2, 64)
+		feeString := strconv.FormatFloat(transfer.Fee, 'f', 4, 64)
 		txIDString := transfer.TxID
 		paymentIDString := transfer.PaymentID
 		confirmationsString := strconv.Itoa(transfer.Confirmations)
@@ -675,7 +675,7 @@ func getAndDisplayListRemoteNodes() {
 				if err != nil {
 					nodeNameAndFee += "?"
 				} else {
-					nodeNameAndFee += humanize.FtoaWithDigits(feeAmount, 2)
+					nodeNameAndFee += humanize.FtoaWithDigits(feeAmount, 4)
 				}
 				nodeNameAndFee += " TRTL)"
 				qmlBridge.ChangeTextRemoteNode(theIndex, nodeNameAndFee)
@@ -701,7 +701,7 @@ func amountStringUSDToTRTL(amountTRTLString string) string {
 		return ""
 	}
 	amountUSD := amountTRTL * rateUSDTRTL
-	amountUSDString := strconv.FormatFloat(amountUSD, 'f', 2, 64) + " $"
+	amountUSDString := strconv.FormatFloat(amountUSD, 'f', 4, 64) + " $"
 	return amountUSDString
 }
 

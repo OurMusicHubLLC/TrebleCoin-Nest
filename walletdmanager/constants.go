@@ -7,7 +7,7 @@ package walletdmanager
 
 const (
 	// DefaultTransferFee is the default fee. It is expressed in TRTL
-	DefaultTransferFee float64 = 0.1
+	DefaultTransferFee float64 = 0.001
 
 	logWalletdCurrentSessionFilename     = "treble-service-session.log"
 	logWalletdAllSessionsFilename        = "treble-service.log"
