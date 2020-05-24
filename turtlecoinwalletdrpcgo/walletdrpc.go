@@ -141,7 +141,7 @@ func RequestStatus(rpcPassword string) (walletBlockCount int, knownBlockCount in
 func SendTransaction(addressRecipient string, amount float64, paymentID string, fee float64, rpcPassword string) (transactionHash string, err error) {
 
 	amountInt := uint64(amount * 10000) // expressed in hundredth of TRTL
-	feeInt := uint64(fee * 1000)       // expressed in hundredth of TRTL
+	feeInt := uint64(fee * 10000)       // expressed in hundredth of TRTL
 
 	args := make(map[string]interface{})
 	args["fee"] = feeInt
@@ -316,7 +316,7 @@ func GetFeeInfo(rpcPassword string) (address string, fee float64, status string,
 
 	resultAmount := result.(map[string]interface{})["amount"]
 	if resultAmount != nil {
-		fee = resultAmount.(float64) / 10000
+		fee = resultAmount.(float64)
 	} else {
 		fee = 0
 	}
